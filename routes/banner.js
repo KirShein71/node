@@ -1,5 +1,5 @@
 import express from 'express'
-import BannerController from '../controllers/BannerController.js'
+import BannerController from '../controllers/bannerController.js'
 
 import authMiddleware from '../middleware/authMiddleware.js'
 import adminMiddleware from '../middleware/adminMiddleware.js'

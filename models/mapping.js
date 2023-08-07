@@ -40,6 +40,10 @@ const Event = sequelize.define('event', {
     image: { type: DataTypes.STRING, allowNull: false },
 })
 
+const Banner = sequelize.define('banner', {
+    image: { type: DataTypes.STRING, allowNull: false },
+})
+
 
 const Category = sequelize.define('category', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
@@ -211,7 +215,7 @@ export {
     User,
     Basket,
     Product,
- 
+    Banner,
     Category,
     Winery,
     Year,

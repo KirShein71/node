@@ -12,11 +12,11 @@ import errorMiddleware from './middleware/ErrorHandler.js'
 
 
 
-const PORT = process.env.PORT || 8080
+
 
 const app = express()
 // Cross-Origin Resource Sharing
-app.use(cors({origin: ['http://www.ruswine-spb.ru', 'http://localhost:3000'], credentials: true}))
+app.use(cors({origin: ['http://www.ruswine-spb.ru'], credentials: true}))
 // middleware для работы с json
 app.use(express.json())
 // middleware для статики (img, css)
@@ -41,7 +41,7 @@ const start = async () => {
     try {
         await sequelize.authenticate()
         await sequelize.sync()
-        app.listen(PORT, () => console.log('Сервер запущен на порту', PORT))
+        app.listen(8080, () => console.log('Сервер запущен на порту', 8080))
     } catch(e) {
         console.log(e)
     }

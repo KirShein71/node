@@ -35,13 +35,18 @@ app.use('/api', router)
 // обработка ошибок
 app.use(errorMiddleware)
 
-
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+  });
 
 const start = async () => {
     try {
         await sequelize.authenticate()
         await sequelize.sync()
-        app.listen(80, () => console.log('Сервер запущен на порту', 80))
+        app.listen(5000, () => console.log('Сервер запущен на порту', 5000))
     } catch(e) {
         console.log(e)
     }

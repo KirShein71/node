@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 8080
 
 const app = express()
 // Cross-Origin Resource Sharing
-app.use(cors({origin: ['http://www.ruswine-spb.ru/'], credentials: true}))
+app.use(cors({origin: ['http://www.ruswine-spb.ru', 'http://localhost:3000'], credentials: true}))
 // middleware для работы с json
 app.use(express.json())
 // middleware для статики (img, css)

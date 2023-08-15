@@ -1,4 +1,5 @@
 import dotenv from 'dotenv/config.js'
+
 import express from 'express'
 import sequelize from './sequelize.js'
 import * as mapping from './models/mapping.js'
@@ -14,7 +15,8 @@ import errorMiddleware from './middleware/ErrorHandler.js'
 const PORT = process.env.PORT || 5000
 
 const app = express()
-
+// Cross-Origin Resource Sharing
+app.use(cors({origin: [ 'https://www.ruswine-spb.ru', 'http://www.ruswine-spb.ru'], credentials: true}))
 // middleware для работы с json
 app.use(express.json())
 // middleware для статики (img, css)

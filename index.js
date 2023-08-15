@@ -1,5 +1,4 @@
 import dotenv from 'dotenv/config.js'
-
 import express from 'express'
 import sequelize from './sequelize.js'
 import * as mapping from './models/mapping.js'

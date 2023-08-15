@@ -1,5 +1,5 @@
 import dotenv from 'dotenv/config.js'
-
+import https from 'https';
 import express from 'express'
 import sequelize from './sequelize.js'
 import * as mapping from './models/mapping.js'
@@ -12,11 +12,17 @@ import errorMiddleware from './middleware/ErrorHandler.js'
 
 
 
-const PORT = process.env.PORT || 5000
+
 
 const app = express()
+
+const options = {
+    key: fs.readFileSync('/etc/nginx/ssl/ruswine-spb.key'),
+    cert: fs.readFileSync('/etc/nginx/ssl/ruswine-spb.crt')
+  };
+  
 // Cross-Origin Resource Sharing
-app.use(cors({origin: ['http://www.ruswine-spb.ru'], credentials: true}))
+app.use(cors({origin: ['https://www.ruswine-spb.ru'], credentials: true}))
 // middleware для работы с json
 app.use(express.json())
 // middleware для статики (img, css)
@@ -35,16 +41,24 @@ app.use('/api', router)
 // обработка ошибок
 app.use(errorMiddleware)
 
+// Создание HTTPS-сервера
+const server = https.createServer(options, app);
+
+server.listen(443, () => {
+    console.log('Сервер запущен на порту 443');
+  });
+  
 
 
-const start = async () => {
-    try {
-        await sequelize.authenticate()
-        await sequelize.sync()
-        app.listen(PORT, () => console.log('Сервер запущен на порту', PORT))
-    } catch(e) {
-        console.log(e)
-    }
-}
 
-start()
+// const start = async () => {
+//     try {
+//         await sequelize.authenticate()
+//         await sequelize.sync()
+//         app.listen(PORT, () => console.log('Сервер запущен на порту', PORT))
+//     } catch(e) {
+//         console.log(e)
+//     }
+// }
+
+// start()

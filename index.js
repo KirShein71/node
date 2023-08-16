@@ -16,12 +16,7 @@ const PORT = process.env.PORT || 5000
 
 const app = express()
 // Cross-Origin Resource Sharing
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://ruswine-spb.ru', 'http://ruswine-spb.ru');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-});
+app.use(cors({origin: 'http://www.ruswine-spb.ru', credentials: true}))
 // middleware для работы с json
 app.use(express.json())
 // middleware для статики (img, css)

@@ -19,8 +19,8 @@ class Event {
     async create(data, img) {
         // поскольку image не допускает null, задаем пустую строку
         const image = FileService.save(img) ?? ''
-        const {name, place, link, description, date, responsible} = data
-        const event = await EventMapping.create({name, place, link, description, date, responsible, image})
+        const {name, place, link, description, date, responsible, whatsapp, telegram} = data
+        const event = await EventMapping.create({name, place, link, description, date, responsible, image, whatsapp, telegram})
         
         const created = await EventMapping.findByPk(event.id) 
         return created
@@ -45,9 +45,11 @@ class Event {
             description = event.description,
             date = event.date,
             responsible = event.responsible,
+            whatsapp = event.whatsapp,
+            telegram = event.telegram,
             image = file ? file : event.image
         } = data
-        await event.update({name, place, link, description, date, responsible, image})
+        await event.update({name, place, link, description, date, responsible, image, whatsapp, telegram})
         // обновим объект товара, чтобы вернуть свежие данные
         await event.reload()
         return event

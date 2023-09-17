@@ -34,6 +34,8 @@ const Event = sequelize.define('event', {
     name: { type: DataTypes.STRING, unique: true, allowNull: false },
     place: { type: DataTypes.STRING, unique: true, allowNull: false },
     link: { type: DataTypes.STRING, unique: true, allowNull: false },
+    whatsapp: { type: DataTypes.STRING, unique: true, allowNull: false },
+    telegram: { type: DataTypes.STRING, unique: true, allowNull: false },
     description: { type: DataTypes.STRING, unique: true, allowNull: false },
     responsible: {type: DataTypes.STRING, unique: true, allowNull: false},
     date: {type: DataTypes.STRING, unique: true, allowNull: false},

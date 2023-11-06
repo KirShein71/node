@@ -12,6 +12,7 @@ import brand  from './brand.js'
 import banner from './banner.js'
 
 
+
 const router = new express.Router()
 
 router.use('/product', product)
@@ -24,6 +25,7 @@ router.use('/order', order)
 router.use('/brand', brand)
 router.use('/event', event)
 router.use('/banner', banner)
+
 
 
 export default router

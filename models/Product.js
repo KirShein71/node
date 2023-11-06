@@ -130,6 +130,8 @@ class Product {
         return product
     }
 
+   
+
     async delete(id) {
         const product = await ProductMapping.findByPk(id)
         if (!product) {

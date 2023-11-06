@@ -42,6 +42,9 @@ const Event = sequelize.define('event', {
     image: { type: DataTypes.STRING, allowNull: false },
 })
 
+
+
+
 const Banner = sequelize.define('banner', {
     image: { type: DataTypes.STRING, allowNull: false },
 })
@@ -231,6 +234,7 @@ export {
     CategoryYear,
     Brand,
     Event,
+   
    
     
 }

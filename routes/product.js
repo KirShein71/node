@@ -47,9 +47,8 @@ router.post(
 )
 // обновить свойство товара
 router.put(
-    'product/:productId([0-9]+)/property/update/:id([0-9]+)',
-    authMiddleware,
-    adminMiddleware,
+    '/:productId([0-9]+)/property/update/:id([0-9]+)',
+   
     ProductInfoController.update
 )
 // удалить свойство товара
